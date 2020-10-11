@@ -1,0 +1,174 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}About us{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.3.4/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.3.4/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.3.4/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
+{% endblock link %}
+
+{% block content %}
+    <div class="home">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/about.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_content text-center">
+						<div class="home_title">About us</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% if static_text.title %}
+        <div class="intro">
+            <div class="container">
+                <div class="row row-eq-height">
+
+                    <div class="col-lg-6">
+                        <div class="intro_content">
+                            <div class="section_title_container">
+                                <div class="section_subtitle">the best deals</div>
+                                <div class="section_title"><h1>{{static_text.title}}</h1></div>
+                            </div>
+                            <div class="intro_text">
+                                <p>{{static_text.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 intro_col">
+                        <div class="intro_image">
+                            <div class="background_image" style="background-image:url({% static 'images/intro.jpg' %})"></div>
+                            <img src="{% static 'images/intro.jpg' %}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if services %}
+	<div class="services">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container text-center">
+						<div class="section_subtitle">the best deals</div>
+						<div class="section_title"><h1>Services</h1></div>
+					</div>
+				</div>
+			</div>
+			<div class="row services_row">
+                {% for service in services %}
+                    <div class="col-xl-4 col-md-6">
+                        <div class="service">
+                            <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
+                                <div class="service_icon d-flex flex-column align-items-start justify-content-center">
+                                    <img src="{{service.svg.url}}" alt="">
+                                </div>
+                                <div class="service_title"><h3>{{service.title}}</h3></div>
+                            </div>
+                            <div class="service_text">
+                                <p>{{service.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+			</div>
+		</div>
+	</div>
+    {% endif %}
+    {% if features %}
+        <div class="milestones">
+            <div class="container">
+                <div class="row">
+                    {% for feature in features %}
+                        <div class="col-xl-3 col-md-6 milestone_col">
+                            <div class="milestone d-flex flex-row align-items-start justify-content-md-center justify-content-start">
+                                <div class="milestone_content">
+                                    <div class="milestone_icon d-flex flex-column align-items-start justify-content-center"><img src="{{feature.svg.url}}" alt=""></div>
+                                    {% if feature.number >= 10000 %}
+                                        <div class="milestone_counter" data-end-value={{feature.number|stringformat:"i"|slice:":-3"}} data-sign-after="k">0</div>
+                                    {% else %}
+                                        <div class="milestone_counter" data-end-value="{{feature.number}}">0</div>
+                                    {% endif %}
+                                    <div class="milestone_text">{{feature.title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if realtors %}
+        <div class="agents">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section_title_container text-center">
+                            <div class="section_subtitle">the best deals</div>
+                            <div class="section_title"><h1>Our Realtors</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row agents_row">
+                    {% for realtor in realtors %}
+                        <div class="col-lg-4 agent_col">
+                            <div class="agent">
+                                <div class="agent_image"><img src="{{realtor.image.url}}" alt=""></div>
+                                <div class="agent_content">
+                                    <div class="agent_name">{{realtor.name}}</div>
+                                    <div class="agent_title">{{realtor.specialty}}</div>
+                                    <div class="agent_list">
+                                        <ul>
+                                            <li>{{realtor.email}}</li>
+                                            <li>{{realtor.phone}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="social">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                                            <li><a href="{{realtor.pinterest}}"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                            <li><a href="{{realtor.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="{{realtor.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row contact_row">
+                    <div class="col">
+                        <div class="button ml-auto mr-auto"><a href="{% static '#">contact us</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap-4.1.2/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+    <script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+    <script src="{% static 'plugins/OwlCarousel2-2.3.4/owl.carousel.js' %}"></script>
+    <script src="{% static 'plugins/easing/easing.js' %}"></script>
+    <script src="{% static 'plugins/progressbar/progressbar.min.js' %}"></script>
+    <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+    <script src="{% static 'js/about.js' %}"></script>
+{% endblock scripts %}

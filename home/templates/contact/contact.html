@@ -1,0 +1,100 @@
+{% extends 'contact/base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.2/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact_responsive.css' %}">
+{% endblock link %}
+
+{% block content %}
+    <div class="home">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/blog.jpg' %}" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_content text-center">
+						<div class="home_title">Contact</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contact -->
+
+	<div class="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container text-center">
+						<div class="section_subtitle">the best deals</div>
+						<div class="section_title"><h1>Get in touch</h1></div>
+					</div>
+				</div>
+			</div>
+			<div class="row contact_row">
+
+				{% if static_text %}
+				<div class="col-lg-4 contact_col">
+					<div class="logo"><a href="{% url 'index' %}">my<span>home</span></a></div>
+					<div class="contact_text">
+						<p>{{static_text.text}}</p>
+					</div>
+				</div>
+				{% endif %}
+				<div class="col-lg-4 contact_col">
+					<div class="contact_info">
+						<ul>
+							<li class="d-flex flex-row align-items-center justify-content-start">
+								<div class="d-flex flex-column align-items-center justify-content-center">
+									<div><img src="{{address.svg.url}}" alt=""></div>
+								</div>
+								<span>{{address.text}}</span>
+							</li>
+							<li class="d-flex flex-row align-items-center justify-content-start">
+								<div class="d-flex flex-column align-items-center justify-content-center">
+									<div><img src="{{phone.svg.url}}" alt=""></div>
+								</div>
+								<span>{{phone.text}}</span>
+							</li>
+							<li class="d-flex flex-row align-items-center justify-content-start">
+								<div class="d-flex flex-column align-items-center justify-content-center">
+									<div><img src="{{email.svg.url}}" alt=""></div>
+								</div>
+								<span>{{email.text}}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Contact - Image -->
+				<div class="col-lg-4 contact_col">
+					<div class="contact_image d-flex flex-column align-items-center justify-content-center">
+						<img src="{% static 'images/contact_image.jpg' %}" alt="">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap-4.1.2/popper.js' %}"></script>
+    <script src="{% static 'styles/bootstrap-4.1.2/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/TweenMax.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/TimelineMax.min.js' %}"></script>
+    <script src="{% static 'plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+    <script src="{% static 'plugins/easing/easing.js' %}"></script>
+    <script src="{% static 'plugins/progressbar/progressbar.min.js' %}"></script>
+    <script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,80 @@
+{% load static %}
+{% load contact_tag %}
+<footer class="footer">
+		<div class="footer_content">
+			<div class="container">
+				<div class="row">
+
+					<!-- Footer Column -->
+					<div class="col-xl-4 col-lg-6 footer_col">
+						<div class="footer_about">
+							<div class="footer_logo"><a href="{% url 'index' %}">my<span>home</span></a></div>
+							<div class="footer_text">
+								<p>Nulla aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula urna. Suspendisse fringilla lobortis justo, ut tempor leo cursus in.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-6 footer_col">
+						<div class="footer_column">
+							<div class="footer_title">Information</div>
+							<div class="footer_info">
+								<ul>
+									{% get_contacts as contact %}
+									{% if contact.phone %}
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div><img src="{{contact.phone.svg.url}}" alt=""></div>
+										<span>{{contact.phone.text}}</span>
+									</li>
+									{% endif %}
+									{% if contact.address %}
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div><img src="{{contact.address.svg.url}}" alt=""></div>
+										<span>{{contact.address.text}}</span>
+									</li>
+									{% endif %}
+									{% if contact.email %}
+									<li class="d-flex flex-row align-items-center justify-content-start">
+										<div><img src="{{contact.email.svg.url}}" alt=""></div>
+										<span>{{contact.email.text}}</span>
+									</li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-6 footer_col">
+						<div class="footer_links usefull_links">
+								<div class="footer_title">Usefull Links</div>
+								<ul>
+									<li><a href="{% url 'index' %}">Home</a></li>
+									<li><a href="{% url 'about' %}">About us</a></li>
+									<li><a href="{% url 'listings' %}">Listings</a></li>
+									<li><a href="{% url 'contact' %}">Contact</a></li>
+								</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="footer_bar_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+							<div class="copyright order-md-1 order-2"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{% static 'https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+							<nav class="footer_nav order-md-2 order-1 ml-md-auto">
+								<ul class="d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+									<li><a href="{% url 'index' %}">Home</a></li>
+									<li><a href="{% url 'about' %}">About us</a></li>
+									<li><a href="{% url 'listings' %}">Listings</a></li>
+									<li><a href="{% url 'contact' %}">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
